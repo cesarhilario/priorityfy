@@ -1,103 +1,191 @@
-import Image from "next/image";
+"use client";
+import { ArrowRight, Plus, RotateCcw, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
-export default function Home() {
+import { ThemeToggle } from "@/components/providers/ThemeProvider/components/ThemeToggle";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useItemsStore } from "@/store/useItemsStore";
+
+export default function HomePage() {
+  const { items, addItem, deleteItem, clearAllItems } = useItemsStore();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name.trim()) {
+      addItem({
+        name: name.trim(),
+        description: description.trim(),
+      });
+      setName("");
+      setDescription("");
+    }
+  };
+
+  const handleClearAll = () => {
+    clearAllItems();
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-background">
+      <div className="flex flex-col  h-screen mx-auto p-8 max-w-4xl">
+        <div className="flex-grow place-content-center">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h1 className="text-3xl font-bold">Gerenciamento de Itens</h1>
+              <Card className="mt-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Plus className="w-5 h-5" />
+                    Cadastrar Novo Item
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Nome do Item
+                      </label>
+                      <Input
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Digite o nome do item"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="description"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Descrição
+                      </label>
+                      <Textarea
+                        id="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Digite a descrição do item"
+                        rows={3}
+                      />
+                    </div>
+                    <Button type="submit" className="w-full">
+                      Adicionar Item
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <ThemeToggle />
+                  {items.length > 0 && (
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="text-destructive hover:text-destructive/80 bg-transparent"
+                        >
+                          <RotateCcw className="w-4 h-4 mr-2" />
+                          Limpar Tudo
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            Tem certeza que deseja limpar todos os itens?
+                          </AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Esta ação não pode ser desfeita. Todos os itens
+                            cadastrados serão removidos permanentemente.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                          <AlertDialogAction onClick={handleClearAll}>
+                            Sim, limpar tudo
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  )}
+                </div>
+                <Link href="/board">
+                  <Button className="flex items-center gap-2">
+                    Ir para Matriz <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
+
+              <Card className="mt-6 max-h-82 overflow-auto">
+                <CardHeader>
+                  <CardTitle>Lista de Itens ({items.length})</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 max-h-96 overflow-y-auto">
+                    {items.length === 0 ? (
+                      <p className="text-muted-foreground text-center py-8">
+                        Nenhum item cadastrado ainda
+                      </p>
+                    ) : (
+                      items.map((item) => (
+                        <div
+                          key={item.id}
+                          className="flex items-start justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+                        >
+                          <div className="flex-1">
+                            <h3 className="font-medium">{item.name}</h3>
+                            {item.description && (
+                              <p className="text-sm text-muted-foreground mt-1">
+                                {item.description}
+                              </p>
+                            )}
+                            {item.quadrant > 0 && (
+                              <span className="inline-block mt-2 px-2 py-1 text-xs bg-primary/10 text-primary rounded">
+                                Quadrante {item.quadrant}
+                              </span>
+                            )}
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => deleteItem(item.id)}
+                            className="text-destructive hover:text-destructive/80"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
