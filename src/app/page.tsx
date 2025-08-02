@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { ThemeToggle } from "@/components/providers/ThemeProvider/components/ThemeToggle";
+import { RegisterItemForm } from "@/components/RegisterItemForm";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,21 +23,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useItemsStore } from "@/store/useItemsStore";
 
 export default function HomePage() {
-  const { items, addItem, deleteItem, clearAllItems } = useItemsStore();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (name.trim()) {
-      addItem({
-        name: name.trim(),
-        description: description.trim(),
-      });
-      setName("");
-      setDescription("");
-    }
-  };
+  const { items, deleteItem, clearAllItems } = useItemsStore();
 
   const handleClearAll = () => {
     clearAllItems();
@@ -49,51 +36,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h1 className="text-3xl font-bold">Gerenciamento de Itens</h1>
-              <Card className="mt-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Plus className="w-5 h-5" />
-                    Cadastrar Novo Item
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Nome do Item
-                      </label>
-                      <Input
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Digite o nome do item"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="description"
-                        className="block text-sm font-medium mb-2"
-                      >
-                        Descrição
-                      </label>
-                      <Textarea
-                        id="description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Digite a descrição do item"
-                        rows={3}
-                      />
-                    </div>
-                    <Button type="submit" className="w-full">
-                      Adicionar Item
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+              <RegisterItemForm />
             </div>
 
             <div>
