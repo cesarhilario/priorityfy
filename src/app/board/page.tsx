@@ -1,9 +1,10 @@
 import { Board } from "@/components/Board";
 import { BoardPageActions } from "@/components/BoardPageActions";
+import { Container } from "@/components/Container";
 
 export default function BoardPage() {
   return (
-    <div className="min-h-screen bg-background ">
+    <Container>
       <div className="mx-auto">
         <BoardPageActions />
 
@@ -18,6 +19,6 @@ export default function BoardPage() {
 
         <Board />
       </div>
-    </div>
+    </Container>
   );
 }
