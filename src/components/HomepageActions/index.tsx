@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useItemsStore } from "@/store/useItemsStore";

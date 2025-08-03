@@ -19,12 +19,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 export function ItemsList() {
   const { items, deleteItem } = useItemsStore();
   return (
-    <Card className="mt-6 max-h-82 overflow-auto">
+    <Card className="mt-6 max-h-86 overflow-auto">
       <CardHeader>
         <CardTitle>Lista de Itens ({items.length})</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3 max-h-96">
+        <div className="space-y-3 max-h-96 mb-4">
           {items.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">
               Nenhum item cadastrado ainda
@@ -41,11 +41,6 @@ export function ItemsList() {
                     <p className="text-sm text-muted-foreground mt-1">
                       {item.description}
                     </p>
-                  )}
-                  {item.quadrant > 0 && (
-                    <span className="inline-block mt-2 px-2 py-1 text-xs bg-primary/10 text-primary rounded">
-                      Quadrante {item.quadrant}
-                    </span>
                   )}
                 </div>
                 <AlertDialog>
