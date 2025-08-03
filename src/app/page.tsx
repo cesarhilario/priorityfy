@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="flex flex-col  h-screen mx-auto p-8 max-w-4xl">
+      <div className="flex flex-col h-screen mx-auto p-8 max-w-4xl">
         <div className="flex-grow place-content-center">
           <div className="grid md:grid-cols-2 gap-8">
             <div>

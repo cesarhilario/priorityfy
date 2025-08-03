@@ -24,7 +24,7 @@ export function ItemsList() {
         <CardTitle>Lista de Itens ({items.length})</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3 max-h-96 overflow-y-auto">
+        <div className="space-y-3 max-h-96">
           {items.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">
               Nenhum item cadastrado ainda

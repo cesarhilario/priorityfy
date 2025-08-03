@@ -62,7 +62,6 @@ export function RegisterItemForm() {
                     <Textarea
                       {...field}
                       placeholder="Digite a descrição do item"
-                      required
                     />
                   </FormControl>
                   <FormMessage />
