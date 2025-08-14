@@ -9,25 +9,19 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Conditional } from "@/components/Conditional";
+import { RegisterForm } from "./components/RegisterForm";
 
-import { LoginForm } from "./components/LoginForm";
-import { LoginSeparator } from "./components/LoginSeparator";
-import { SocialLogin } from "./components/SocialLogin";
-
-export function LoginCard() {
+export function RegisterCard() {
   const { isLoading } = useAppLoading();
 
   return (
     <Card>
       <CardHeader className="text-center">
-        <CardTitle className="text-xl">Bem vindo de volta</CardTitle>
-        <CardDescription>Entrar com sua conta Google</CardDescription>
+        <CardTitle className="text-xl">Seja Bem vindo</CardTitle>
       </CardHeader>
       <CardContent>
         <Conditional.If condition={!isLoading}>
-          <SocialLogin />
-          <LoginSeparator />
-          <LoginForm />
+          <RegisterForm />
         </Conditional.If>
         <Conditional.ElseIf condition={isLoading}>
           <div className="flex items-center justify-center py-6">

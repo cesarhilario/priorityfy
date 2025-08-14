@@ -9,6 +9,8 @@ export async function middleware(req: NextRequest) {
   // Permite acesso livre a essas rotas
   if (
     pathname.startsWith("/login") ||
+    pathname.startsWith("/register") ||
+    pathname.startsWith("/reset-password") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
     pathname === "/favicon.ico"

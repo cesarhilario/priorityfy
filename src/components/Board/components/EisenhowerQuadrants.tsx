@@ -48,13 +48,6 @@ export function EisenhowerQuadrants({
                             .title
                         }
                       </CardTitle>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {
-                          quadrantData[
-                            quadrant as keyof typeof quadrantData
-                          ].subtitle.split(" - ")[0]
-                        }
-                      </p>
                     </div>
                   </div>
                   <Badge
@@ -79,11 +72,6 @@ export function EisenhowerQuadrants({
                       <h3 className="font-medium text-sm group-hover:text-primary transition-colors">
                         {item.name}
                       </h3>
-                      {item.description && (
-                        <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
-                          {item.description}
-                        </p>
-                      )}
                     </button>
                   ))}
                   {quadrantItems.length === 0 && (

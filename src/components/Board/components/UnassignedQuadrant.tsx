@@ -51,11 +51,6 @@ export function UnassignedQuadrant({
               <h3 className="font-medium text-sm group-hover:text-primary transition-colors">
                 {item.name}
               </h3>
-              {item.description && (
-                <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
-                  {item.description}
-                </p>
-              )}
             </button>
           ))}
           {unassignedItems.length === 0 && (

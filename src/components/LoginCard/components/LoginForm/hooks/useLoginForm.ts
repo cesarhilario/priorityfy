@@ -5,8 +5,14 @@ import {
   type LoginFormSchemaType,
   loginFormSchema,
 } from "../schema/LoginFormSchema";
+import { signInWithEmailAndPassword } from "@/lib/firebase/auth";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { auth } from "@/lib/firebase/firebase";
+import { GenericError } from "@/types";
 
 export function useLoginForm() {
+  const router = useRouter();
   const loginForm = useForm<LoginFormSchemaType>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -17,8 +23,36 @@ export function useLoginForm() {
     reValidateMode: "onSubmit",
   });
 
-  const onSubmit = (data: LoginFormSchemaType) => {
-    console.log("Form submitted:", data);
+  const onSubmit = async (data: LoginFormSchemaType) => {
+    try {
+      const { user } = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      if (user) {
+        await fetch("/api/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            token: await user.getIdToken(),
+          }),
+        });
+        router.push("/");
+      }
+    } catch (err) {
+      const error = err as GenericError;
+      if (error.code === "auth/invalid-credential") {
+        toast.error(
+          "Erro ao fazer login. Verifique suas credenciais e tente novamente."
+        );
+
+        return;
+      }
+
+      toast.error("Tivemos um problema. Tente novamente mais tarde.");
+    }
   };
 
   return { onSubmit, loginForm };

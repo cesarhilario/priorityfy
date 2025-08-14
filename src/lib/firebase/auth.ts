@@ -4,6 +4,11 @@ import {
   type UserCredential,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 
 export async function signInWithGoogle(): Promise<UserCredential | null> {
   const provider = new GoogleAuthProvider();
@@ -21,3 +26,17 @@ export async function signInWithGoogle(): Promise<UserCredential | null> {
 
   return null;
 }
+
+export const signUpWithEmailPassword = async (
+  email: string,
+  password: string
+) => {
+  try {
+    return await createUserWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log("Error signing up with email and password", error);
+    throw error;
+  }
+};
+
+export { signInWithEmailAndPassword };

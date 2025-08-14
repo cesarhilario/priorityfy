@@ -1,9 +1,8 @@
 import Image from "next/image";
 
-import { LoginCard } from "@/components/LoginCard";
 import { cn } from "@/lib/utils";
-
-export default function LoginPage() {
+import { ResetPasswordCard } from "@/components/ResetPasswordCard";
+export default function RegisterPage() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10 bg-zinc-800">
       <div className="flex w-full max-w-sm flex-col gap-6">
@@ -19,8 +18,8 @@ export default function LoginPage() {
           </div>
           <h2 className="text-2xl font-bold">Jump Source - Priorityfy</h2>
         </div>
-        <div className={cn("flex flex-col gap-6")}>
-          <LoginCard />
+        <div className={cn("flex flex-col gap-4")}>
+          <ResetPasswordCard />
         </div>
       </div>
     </div>
