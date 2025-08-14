@@ -39,7 +39,7 @@ export function useLoginForm() {
             token: await user.getIdToken(),
           }),
         });
-        router.push("/");
+        router.push("/items");
       }
     } catch (err) {
       const error = err as GenericError;

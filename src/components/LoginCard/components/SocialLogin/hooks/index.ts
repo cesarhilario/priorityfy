@@ -22,7 +22,7 @@ export function useSocialLogin() {
         throw new Error("Falha ao criar sessão");
       }
 
-      router.push("/");
+      router.push("/items");
     } catch (error) {
       console.error(error);
     } finally {

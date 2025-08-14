@@ -12,7 +12,7 @@ export function BoardPageActions() {
   return (
     <div className="flex flex-col items-start m-4">
       <div className="flex items-center justify-between w-full mb-4">
-        <Link href="/">
+        <Link href="/items">
           <Button
             variant="outline"
             className="flex items-center gap-2 bg-transparent"

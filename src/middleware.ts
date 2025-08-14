@@ -13,6 +13,7 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith("/reset-password") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
+    pathname === "/" ||
     pathname === "/favicon.ico"
   ) {
     return NextResponse.next();
