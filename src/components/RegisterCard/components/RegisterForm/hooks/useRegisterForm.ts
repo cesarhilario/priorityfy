@@ -1,14 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { signUpWithEmailPassword } from "@/lib/firebase/auth";
-
+import type { GenericError } from "@/types";
 import {
   type RegisterFormSchema,
   registerFormSchema,
 } from "../schema/RegisterFormSchema";
-import { toast } from "sonner";
-import { GenericError } from "@/types";
-import { useRouter } from "next/navigation";
 
 export function useRegisterForm() {
   const router = useRouter();

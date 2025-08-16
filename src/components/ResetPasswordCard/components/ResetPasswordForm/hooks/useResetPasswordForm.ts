@@ -1,13 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-
+import { toast } from "sonner";
+import type { GenericError } from "@/types";
 import {
   type ResetPasswordFormSchemaType,
   resetPasswordFormSchema,
 } from "../schema/ResetPasswordFormSchema";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { GenericError } from "@/types";
 
 export function useResetPasswordForm() {
   const router = useRouter();

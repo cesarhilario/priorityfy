@@ -1,7 +1,6 @@
 import Image from "next/image";
-
-import { cn } from "@/lib/utils";
 import { RegisterCard } from "@/components/RegisterCard";
+import { cn } from "@/lib/utils";
 
 export default function RegisterPage() {
   return (

@@ -1,7 +1,6 @@
 import Image from "next/image";
-
-import { cn } from "@/lib/utils";
 import { ResetPasswordCard } from "@/components/ResetPasswordCard";
+import { cn } from "@/lib/utils";
 export default function RegisterPage() {
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10 bg-zinc-800">

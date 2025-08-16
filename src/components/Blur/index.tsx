@@ -10,6 +10,7 @@ export const Blur = (props: React.SVGProps<SVGSVGElement>) => {
         style={props.style}
         {...props}
       >
+        <title>Blur</title>
         <circle cx="71" cy="61" r="111" fill="#FA2C37" />
         <circle cx="244" cy="106" r="139" fill="#F7339A" />
         <circle cy="291" r="139" fill="#F7339A" />

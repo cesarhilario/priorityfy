@@ -1,14 +1,8 @@
 "use client";
+import { Conditional } from "@/components/Conditional";
 import { useAppLoading } from "@/store/useAppLoading";
 import { Spinner } from "../Spinner";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import { Conditional } from "@/components/Conditional";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { RegisterForm } from "./components/RegisterForm";
 
 export function RegisterCard() {

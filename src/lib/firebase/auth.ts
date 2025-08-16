@@ -1,14 +1,11 @@
 import {
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
   signInWithPopup,
   type UserCredential,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase/firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-} from "firebase/auth";
 
 export async function signInWithGoogle(): Promise<UserCredential | null> {
   const provider = new GoogleAuthProvider();

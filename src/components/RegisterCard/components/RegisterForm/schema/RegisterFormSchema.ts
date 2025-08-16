@@ -1,5 +1,5 @@
-import { SECURE_PASSWORD_REGEX } from "@/constants";
 import { z } from "zod/v4";
+import { SECURE_PASSWORD_REGEX } from "@/constants";
 
 const registerFormSchema = z
   .object({

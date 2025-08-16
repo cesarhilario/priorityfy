@@ -1,22 +1,22 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ThemeToggle } from "@/components/providers/ThemeProvider/components/ThemeToggle";
-import Image from "next/image";
 import {
   ArrowRight,
+  BarChartIcon as ChartNoAxesCombined,
+  Clock,
   Grid2X2,
   Heart,
-  Clock,
-  BarChartIcon as ChartNoAxesCombined,
+  ListChecks,
   ShieldCheck,
   Trophy,
-  ListChecks,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { Blur } from "@/components/Blur";
+import { ThemeToggle } from "@/components/providers/ThemeProvider/components/ThemeToggle";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function LandingPage() {
   return (

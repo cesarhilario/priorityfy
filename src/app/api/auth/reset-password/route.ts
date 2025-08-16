@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { GenericError } from "@/types";
 import { getAuth } from "@/lib/firebase/firebase-admin";
+import type { GenericError } from "@/types";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

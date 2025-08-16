@@ -1,15 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-
+import { toast } from "sonner";
+import { signInWithEmailAndPassword } from "@/lib/firebase/auth";
+import { auth } from "@/lib/firebase/firebase";
+import type { GenericError } from "@/types";
 import {
   type LoginFormSchemaType,
   loginFormSchema,
 } from "../schema/LoginFormSchema";
-import { signInWithEmailAndPassword } from "@/lib/firebase/auth";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { auth } from "@/lib/firebase/firebase";
-import { GenericError } from "@/types";
 
 export function useLoginForm() {
   const router = useRouter();

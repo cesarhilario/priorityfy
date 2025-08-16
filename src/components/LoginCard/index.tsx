@@ -1,4 +1,5 @@
 "use client";
+import { Conditional } from "@/components/Conditional";
 import { useAppLoading } from "@/store/useAppLoading";
 import { Spinner } from "../Spinner";
 import {
@@ -8,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Conditional } from "@/components/Conditional";
 
 import { LoginForm } from "./components/LoginForm";
 import { LoginSeparator } from "./components/LoginSeparator";
@@ -24,16 +24,18 @@ export function LoginCard() {
         <CardDescription>Entrar com sua conta Google</CardDescription>
       </CardHeader>
       <CardContent>
-        <Conditional.If condition={!isLoading}>
-          <SocialLogin />
-          <LoginSeparator />
-          <LoginForm />
-        </Conditional.If>
-        <Conditional.ElseIf condition={isLoading}>
-          <div className="flex items-center justify-center py-6">
-            <Spinner />
-          </div>
-        </Conditional.ElseIf>
+        <Conditional>
+          <Conditional.If condition={!isLoading}>
+            <SocialLogin />
+            <LoginSeparator />
+            <LoginForm />
+          </Conditional.If>
+          <Conditional.ElseIf condition={isLoading}>
+            <div className="flex items-center justify-center py-6">
+              <Spinner />
+            </div>
+          </Conditional.ElseIf>
+        </Conditional>
       </CardContent>
     </Card>
   );

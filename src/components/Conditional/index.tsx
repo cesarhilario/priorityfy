@@ -1,4 +1,3 @@
-// components/Conditional.tsx
 import { isValidElement, type ReactNode } from "react";
 
 type ConditionalProps = {
