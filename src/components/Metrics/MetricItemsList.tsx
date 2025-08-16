@@ -2,7 +2,7 @@
 import { useMetrics } from "@/hooks/useMetrics";
 import { ItemCard } from "./ItemCard";
 
-export function ItemsList() {
+export function MetricItemsList() {
   const {
     assignedItems,
     metrics,

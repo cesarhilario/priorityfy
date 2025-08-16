@@ -1,15 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { Conditional } from "@/components/Conditional";
-import { ItemsList } from "@/components/ItemsList";
-import { ItemCard } from "@/components/Metrics/ItemCard";
+import { MetricItemsList } from "@/components/Metrics/MetricItemsList";
 import { MetricsHeader } from "@/components/Metrics/MetricsHeader";
 import { NoAssignedItemsCard } from "@/components/Metrics/NoAssignedItemsCard";
 import { TierSystemCard } from "@/components/Metrics/TierSystemCard";
 import { PriorityModeSelector } from "@/components/PriorityModeSelector";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { useMetrics } from "@/hooks/useMetrics";
 
 export default function MetricsPage() {
@@ -40,7 +36,7 @@ export default function MetricsPage() {
             <NoAssignedItemsCard />
           </Conditional.If>
           <Conditional.Else>
-            <ItemsList />
+            <MetricItemsList />
           </Conditional.Else>
         </Conditional>
 
