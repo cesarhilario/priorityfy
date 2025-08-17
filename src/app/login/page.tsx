@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { LoginCard } from "@/components/LoginCard";
+import { LoginCard } from "@/components/Auth/LoginCard";
 import { cn } from "@/lib/utils";
 
 export default function LoginPage() {

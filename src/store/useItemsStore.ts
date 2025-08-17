@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { calculateScores } from "@/domain/calculateScores";
+import { calculateScores } from "@/functions/calculateScores";
 
-export interface Item {
+export type Item = {
   id: string;
   name: string;
   description: string;
@@ -10,7 +10,7 @@ export interface Item {
   durationInMinutes: number; // em minutos
   desire: number; // 1-5
   score: number;
-}
+};
 
 export type PriorityMode = "desire" | "time";
 

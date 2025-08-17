@@ -1,7 +1,12 @@
 "use client";
 
 import { Trash2 } from "lucide-react";
-import { useItemsStore } from "@/store/useItemsStore";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components//ui/card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,9 +17,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { useItemsStore } from "@/store/useItemsStore";
 
 export function ItemsList() {
   const { items, deleteItem } = useItemsStore();

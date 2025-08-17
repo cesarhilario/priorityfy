@@ -1,10 +1,9 @@
-"use client";
 import { Clock, Heart, Zap } from "lucide-react";
+import { Conditional } from "@/components/Conditional";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { PriorityMode } from "@/store/useItemsStore";
-import { Conditional } from "../Conditional";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export function PriorityModeSelector({
   priorityMode,

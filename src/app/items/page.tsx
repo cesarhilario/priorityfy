@@ -1,7 +1,7 @@
+import { RegisterItemForm } from "@/components/Auth/RegisterItemForm";
 import { Container } from "@/components/Container";
-import { HomePageActions } from "@/components/HomepageActions";
-import { ItemsList } from "@/components/ItemsList";
-import { RegisterItemForm } from "@/components/RegisterItemForm";
+import { HomepageHeader } from "@/components/Homepage/HomepageHeader";
+import { ItemsList } from "@/components/Homepage/ItemsList";
 
 export default function HomePage() {
   return (
@@ -15,7 +15,7 @@ export default function HomePage() {
                   Gerenciamento de Itens
                 </h1>
               </div>
-              <HomePageActions />
+              <HomepageHeader />
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <RegisterItemForm />

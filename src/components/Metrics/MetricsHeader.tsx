@@ -9,10 +9,12 @@ import { Button } from "../ui/button";
 export function MetricsHeader({
   assignedItems,
   completedItems,
+  allItemsCompleted,
   handleMeasure,
 }: {
   assignedItems: Item[];
   completedItems: Item[];
+  allItemsCompleted: boolean;
   handleMeasure: () => void;
 }) {
   return (
@@ -32,7 +34,7 @@ export function MetricsHeader({
       <Button
         onClick={handleMeasure}
         className="flex items-center gap-2"
-        disabled={completedItems.length === 0}
+        disabled={!allItemsCompleted}
       >
         <Calculator className="w-4 h-4" /> Medir ({completedItems.length}/
         {assignedItems.length})

@@ -3,7 +3,7 @@
 import { ArrowRight, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useItemsStore } from "@/store/useItemsStore";
-import { ThemeToggle } from "../providers/ThemeProvider/components/ThemeToggle";
+import { ThemeToggle } from "../../providers/ThemeProvider/components/ThemeToggle";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,13 +14,13 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
-import { Button } from "../ui/button";
+} from "../../ui/alert-dialog";
+import { Button } from "../../ui/button";
 
-export function HomePageActions() {
+export function HomepageHeader() {
   const { items, clearAllItems } = useItemsStore();
   return (
-    <div className="flex items-center justify-between gap-3 my-4 md:m-0">
+    <header className="flex items-center justify-between gap-3 my-4 md:m-0">
       <div className="flex items-center gap-3">
         <ThemeToggle />
         {items.length > 0 && (
@@ -60,6 +60,6 @@ export function HomePageActions() {
           Ir para Matriz <ArrowRight className="w-4 h-4" />
         </Button>
       </Link>
-    </div>
+    </header>
   );
 }

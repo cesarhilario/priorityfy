@@ -63,12 +63,14 @@ export function ItemCard({
               <Input
                 id={`duration-${item.id}`}
                 type="number"
-                placeholder="Valor"
+                placeholder="0"
                 value={
-                  getUnitValue(
-                    item.durationInMinutes,
-                    metrics[item.id]?.unit || "minutes"
-                  ) || ""
+                  metrics[item.id]?.duration === 0 && metrics[item.id]?.unit
+                    ? ""
+                    : getUnitValue(
+                        item.durationInMinutes,
+                        metrics[item.id]?.unit || "minutes"
+                      ) || ""
                 }
                 onChange={(e) =>
                   handleDurationChange(

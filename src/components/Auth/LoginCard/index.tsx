@@ -1,14 +1,14 @@
 "use client";
 import { Conditional } from "@/components/Conditional";
-import { useAppLoading } from "@/store/useAppLoading";
-import { Spinner } from "../Spinner";
+import { Spinner } from "@/components/Spinner";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@/components/ui/card";
+import { useAppLoading } from "@/store/useAppLoading";
 
 import { LoginForm } from "./components/LoginForm";
 import { LoginSeparator } from "./components/LoginSeparator";

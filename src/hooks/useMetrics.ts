@@ -9,14 +9,31 @@ export function useMetrics() {
   const router = useRouter();
   const [metrics, setMetrics] = useState<Metrics>({});
 
-  const assignedItems = items.filter((item) => item.quadrant > 0);
+  const assignedItems = items.filter(
+    (item) => item.quadrant > 0 && item.quadrant !== 4
+  );
 
   const handleDurationChange = (
     itemId: string,
     value: string,
     unit: string
   ) => {
-    const numValue = value === "" ? 0 : Number.parseFloat(value) || 0;
+    if (value === "") {
+      setMetrics((prev) => ({
+        ...prev,
+        [itemId]: {
+          ...prev[itemId],
+          duration: 0,
+          unit,
+        },
+      }));
+
+      updateItem(itemId, { durationInMinutes: 0 });
+      return;
+    }
+
+    // Quando há valor, processa normalmente
+    const numValue = Number.parseFloat(value) || 0;
     let durationInMinutes = numValue;
 
     switch (unit) {
@@ -44,20 +61,19 @@ export function useMetrics() {
   };
 
   const handleDesireChange = (itemId: string, value: string) => {
-    // Permite valores vazios temporariamente para poder apagar
     if (value === "") {
-      // Não atualiza o item ainda, apenas o estado local
       setMetrics((prev) => ({
         ...prev,
         [itemId]: {
           ...prev[itemId],
-          desire: 0, // Temporariamente 0 para permitir apagar
+          desire: 0,
         },
       }));
+      updateItem(itemId, { desire: 0 });
       return;
     }
 
-    // Quando há valor, garante que está entre 1-5
+    // Garante que o desejo esteja entre 1 e 5
     const desire = Math.max(1, Math.min(5, Number.parseInt(value) || 1));
     setMetrics((prev) => ({
       ...prev,
@@ -97,9 +113,13 @@ export function useMetrics() {
     (item) => item.durationInMinutes > 0 && item.desire > 0
   );
 
+  const allItemsCompleted =
+    assignedItems.length > 0 && completedItems.length === assignedItems.length;
+
   return {
     assignedItems,
     completedItems,
+    allItemsCompleted,
     metrics,
     priorityMode,
     handleDurationChange,

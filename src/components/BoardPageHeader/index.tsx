@@ -5,12 +5,12 @@ import { useItemsStore } from "@/store/useItemsStore";
 import { ThemeToggle } from "../providers/ThemeProvider/components/ThemeToggle";
 import { Button } from "../ui/button";
 
-export function BoardPageActions() {
+export function BoardPageHeader() {
   const { items } = useItemsStore();
   const assignedItemsCount = items.filter((item) => item.quadrant > 0).length;
 
   return (
-    <div className="flex flex-col items-start m-4">
+    <header className="flex flex-col items-start m-4">
       <div className="flex items-center justify-between w-full mb-4">
         <Link href="/items">
           <Button
@@ -32,6 +32,6 @@ export function BoardPageActions() {
           </Link>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

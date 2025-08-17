@@ -4,14 +4,15 @@ import { Conditional } from "@/components/Conditional";
 import { MetricItemsList } from "@/components/Metrics/MetricItemsList";
 import { MetricsHeader } from "@/components/Metrics/MetricsHeader";
 import { NoAssignedItemsCard } from "@/components/Metrics/NoAssignedItemsCard";
+import { PriorityModeSelector } from "@/components/Metrics/PriorityModeSelector";
 import { TierSystemCard } from "@/components/Metrics/TierSystemCard";
-import { PriorityModeSelector } from "@/components/PriorityModeSelector";
 import { useMetrics } from "@/hooks/useMetrics";
 
 export default function MetricsPage() {
   const {
     assignedItems,
     completedItems,
+    allItemsCompleted,
     priorityMode,
     handlePriorityModeChange,
     handleMeasure,
@@ -23,6 +24,7 @@ export default function MetricsPage() {
         <MetricsHeader
           assignedItems={assignedItems}
           completedItems={completedItems}
+          allItemsCompleted={allItemsCompleted}
           handleMeasure={handleMeasure}
         />
 

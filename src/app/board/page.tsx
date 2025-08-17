@@ -1,12 +1,12 @@
 import { Board } from "@/components/Board";
-import { BoardPageActions } from "@/components/BoardPageActions";
+import { BoardPageHeader } from "@/components/BoardPageHeader";
 import { Container } from "@/components/Container";
 
 export default function BoardPage() {
   return (
     <Container>
       <div className="mx-auto">
-        <BoardPageActions />
+        <BoardPageHeader />
 
         <div className="m-4">
           <h1 className="text-2xl md:text-3xl font-bold">
