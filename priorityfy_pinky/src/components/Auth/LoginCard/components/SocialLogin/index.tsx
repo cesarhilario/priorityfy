@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "../../../ui/button";
+import { Button } from "@/components/ui/button";
 import { useSocialLogin } from "./hooks";
 
 export function SocialLogin() {

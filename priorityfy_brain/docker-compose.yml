@@ -1,0 +1,14 @@
+services:
+  db:
+    image: bitnami/postgresql:17
+    environment:
+      POSTGRESQL_USERNAME: ${DB_USERNAME}
+      POSTGRESQL_PASSWORD: ${DB_PASSWORD}
+      POSTGRESQL_DATABASE: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - priorityfy_db_data:/bitnami/postgresql
+
+volumes:
+  priorityfy_db_data:

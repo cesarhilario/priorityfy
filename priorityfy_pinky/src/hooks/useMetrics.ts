@@ -32,7 +32,6 @@ export function useMetrics() {
       return;
     }
 
-    // Quando há valor, processa normalmente
     const numValue = Number.parseFloat(value) || 0;
     let durationInMinutes = numValue;
 
@@ -73,7 +72,6 @@ export function useMetrics() {
       return;
     }
 
-    // Garante que o desejo esteja entre 1 e 5
     const desire = Math.max(1, Math.min(5, Number.parseInt(value) || 1));
     setMetrics((prev) => ({
       ...prev,
