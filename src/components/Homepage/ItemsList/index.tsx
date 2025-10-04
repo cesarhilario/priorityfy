@@ -64,8 +64,9 @@ export function ItemsList() {
                         Tem certeza que deseja excluir este item?
                       </AlertDialogTitle>
                       <AlertDialogDescription>
-                        Esta ação não pode ser desfeita. O item "{item.name}"
-                        será removido permanentemente.
+                        Esta ação não pode ser desfeita. O item &quot;
+                        {item.name}
+                        &quot; será removido permanentemente.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

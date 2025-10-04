@@ -38,7 +38,7 @@ export function useResetPasswordForm() {
           },
         });
       } else {
-        throw new Error(response.message || "Failed to send reset email");
+        throw new Error((response as GenericError).message || "Failed to send reset email");
       }
     } catch (err) {
       const error = err as GenericError;
